@@ -1,65 +1,11 @@
 # aiken_fn_showcase
 
-Write validators in the `validators` folder, and supporting functions in the `lib` folder using `.ak` as a file extension.
+This project contains:
 
-```aiken
-validator my_first_validator {
-  spend(_datum: Option<Data>, _redeemer: Data, _output_reference: Data, _context: Data) {
-    True
-  }
-}
-```
-
-## Building
-
-```sh
-aiken build
-```
-
-## Configuring
-
-**aiken.toml**
-```toml
-[config.default]
-network_id = 41
-```
-
-Or, alternatively, write conditional environment modules under `env`.
-
-## Testing
-
-You can write tests in any module using the `test` keyword. For example:
-
-```aiken
-use config
-
-test foo() {
-  config.network_id + 1 == 42
-}
-```
-
-To run all tests, simply do:
-
-```sh
-aiken check
-```
-
-To run only tests matching the string `foo`, do:
-
-```sh
-aiken check -m foo
-```
-
-## Documentation
-
-If you're writing a library, you might want to generate an HTML documentation for it.
-
-Use:
-
-```sh
-aiken docs
-```
-
-## Resources
-
-Find more on the [Aiken's user manual](https://aiken-lang.org).
+- [`functions.ak`](./lib/modules/functions.ak):
+  - Private functions (accessible within the same module)
+  - Public functions (`pub` keyword; accessible from outside by importing, eg. `use modules/functions`)
+  - Labeled arguments (you can also override parameter labels; when running `aiken docs`, the function will display the parameter labels, but in the function body, they are called by the overriden labels)
+- [`anonymous_functions.ak`](./validators/anonymous_functions.ak):
+  - Anonymous functions (they are functions which the definition is not bound to an identifier)
+  - Higher order functions (they are functions that take one or more functions as arguments, or return another function as the result)
