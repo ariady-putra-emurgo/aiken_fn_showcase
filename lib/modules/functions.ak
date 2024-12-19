@@ -14,6 +14,16 @@ fn square(i) {
 
 // ## Public functions
 
+pub fn add(a: Int, b: Int) {
+  a + b
+}
+
+pub fn sub(a: Int, b: Int) {
+  a - b
+}
+
+// ## Looping through Recursion
+
 pub fn increments(i: Int, step: Int) {
   when step is {
     0 -> i
